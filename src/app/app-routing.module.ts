@@ -5,7 +5,6 @@ import { AddCategoryComponent } from './features/category/add-category/add-categ
 
 
 
-
 const routes: Routes = [
   {
     path: 'admin/category',
@@ -14,10 +13,10 @@ const routes: Routes = [
   {
     path: 'admin/category/add',
     component: AddCategoryComponent
-  },
-  
-
+  }
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
