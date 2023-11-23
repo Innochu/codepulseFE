@@ -8,22 +8,25 @@
 </div>
 
 <!-- if category has a value, then -->
-<ng-container *ngIf="categories">  
+<!-- <ng-container *ngIf="categories">     for non async method-->
+<ng-container *ngIf="categories$ | async as categories">
 
 <table class="table table-bordered mt-3">
     <thead>
         <tr>
             <th>Id</th>
-            <th>Name</th>
             <th>Url Handle</th>
+            <th>Name</th>
+           
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let item of categories">
 
-            <td>{{item.Id}}</td>
-            <td>{{item.Name}}</td>
-            <td>{{item.UrlHandle}}</td>
+            <td>{{item.id}}</td>
+            <td>{{item.urlHandle}}</td>
+            <td>{{item.name}}</td>
+           
         </tr>
     </tbody>
 </table>

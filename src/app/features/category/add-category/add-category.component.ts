@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { AddCategoryRequest } from '../models/add-category-request.model';
 import { CategoryService } from '../services/category.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class AddCategoryComponent implements OnDestroy{
   //? makes the subcription to be undefined
 
   
-constructor( private categoryService: CategoryService)
+constructor( private categoryService: CategoryService,
+  private router:Router)
 {
   this.model ={
     name: '',
@@ -32,7 +34,9 @@ constructor( private categoryService: CategoryService)
     .subscribe({
       next: (response) => {
 
-        console.log("This was successful");
+        //console.log("This was successful");
+        this.router.navigateByUrl('admin/category');
+
 
       }
     })
