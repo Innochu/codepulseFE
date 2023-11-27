@@ -17,6 +17,7 @@
             <th>Id</th>
             <th>Url Handle</th>
             <th>Name</th>
+            <th></th>
            
         </tr>
     </thead>
@@ -26,6 +27,7 @@
             <td>{{item.id}}</td>
             <td>{{item.urlHandle}}</td>
             <td>{{item.name}}</td>
+            <td><a  [routerLink]="['/admin/category', item.id]" routerLinkActive="router-link-active" class="btn btn-primary px-5">Edit</a></td>
            
         </tr>
     </tbody>

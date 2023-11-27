@@ -35,7 +35,7 @@ constructor( private categoryService: CategoryService,
       next: (response) => {
 
         //console.log("This was successful");
-        this.router.navigateByUrl('admin/category');
+        this.router.navigateByUrl(`admin/category`);  
 
 
       }
