@@ -9,9 +9,11 @@
             <input type="text" class="form-control" id="categoryName" aria-describedby="categoryNameHelp"  name="categoryName" [(ngModel)]="model.name">
             <small id="categoryNameHelp" class="form-text text-muted">Enter the category name.</small>
         </div>
+
+
         <div class="mb-3">
-            <label for="categoryUrl" class="form-label">Category URL Handle</label>
-            <input type="text" class="form-control" id="categoryUrlHandle" name="categoryUrl" [(ngModel)]="model.urlHandle" >
+            <label for="categoryUrlHandle" class="form-label">Category URL Handle</label>
+            <input type="text" class="form-control" id="categoryUrlHandle" name="categoryUrlHandle" [(ngModel)]="model.urlHandle" >
         </div>
       
         <button type="submit" class="btn btn-primary">Save</button>

@@ -1,0 +1,85 @@
+<div class="container">
+    <h1 class="mt-3">Add BlogPost</h1>
+
+   
+        <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+        <div class="mb-3">
+            <label for="BookTitle" class="form-label">Book Title</label>
+            <input type="text" class="form-control" id="BookTitle" aria-describedby="BookTitleHelp"  name="BookTitle" [(ngModel)]="model.title" >
+            <small id="BookTitle" class="form-text text-muted">Enter Book Title.</small>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="ShortDescription" class="form-label">Short Description</label>
+            <input type="text" class="form-control" id="ShortDescription" aria-describedby="ShortDescription"  name="ShortDescription" [(ngModel)]="model.shortDescription">
+            <small id="ShortDescription" class="form-text text-muted">Enter Short Description not more than 100 words .</small>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="Author" class="form-label">Author</label>
+            <input type="text" class="form-control" id="Author" aria-describedby="Author"  name="Author" [(ngModel)]="model.author">
+            <small id="Author" class="form-text text-muted">Name of Author should not contain numbers nor special characters.</small>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="BookUrlHandle" class="form-label">Url Handle</label>
+            <input type="text" class="form-control" id="BookUrlHandle" aria-describedby="BookUrlHandle"  name="BookUrlHandle"  [(ngModel)]="model.urlHandle" >
+            <small id="BookUrlHandle" class="form-text text-muted">Enter UrlHandle.</small>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="BookContent" class="form-label">Content</label>
+
+            <div class="d-flex">
+                <div class="col-6 p-2">
+                    <textarea type="text" 
+                    class="form-control" 
+                    id="BookContent"
+                    aria-describedby="BookContent" 
+                    name="BookContent"
+                    style="height: 350px; max-height: 350px;"
+                    [(ngModel)]="model.content" >
+                    </textarea>
+                </div>
+
+
+                <!-- <div class="col-6 p-2" style="height: 350px; overflow-y: scroll;">
+                
+                    <markdown [data]="model.content"></markdown>
+                </div> -->
+            </div>
+
+            
+            <small id="BookContent" class="form-text text-muted">Content should not exceed 500 words.</small>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="FeaturedImageUrl" class="form-label">Featured ImageUrl</label>
+            <input type="text" class="form-control" id="FeaturedImageUrl" aria-describedby="FeaturedImageUrl"  name="FeaturedImageUrl" [(ngModel)]="model.featuredUrl">
+            <small id="FeaturedImageUrl" class="form-text text-muted">Enter Featured ImageUrl.</small>
+        </div>
+
+        
+        <div class="mb-3">
+            <label for="DateCreated" class="form-label">Date Created</label>
+            <input type="date" class="form-control" id="DateCreated" aria-describedby="DateCreated"  name="DateCreated" value="{{model.dateCreated}}" [ngModel]="model.dateCreated | date: 'yyy-MM-dd'" (ngModelChange)="model.dateCreated = $event" >
+            <small id="DateCreated" class="form-text text-muted">Date book was published.</small>
+        </div>
+
+      
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="IsVisible" id="isVisibleYes" [(ngModel)]="model.isVisible" [value]="true">
+            <label class="form-check-label" for="isVisibleYes">
+              Is Visible?
+            </label>
+          </div>
+
+
+        <button type="submit" class="btn btn-primary mt-4 px-4">Save</button>
+    </form>
+</div>
