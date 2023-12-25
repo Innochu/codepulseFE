@@ -1,6 +1,136 @@
 <div class="container">
-    <h1 class="mt-3">Edit BlogPost</h1>
 
-   
-  
-</div> 
+    <h1 class="mt-5">Edit Blogpost</h1>
+    <ng-container *ngIf="blogpost; else notfound" >
+
+<form #form="ngForm" (ngSubmit) = "onFormSubmit()">
+<div class="mt-5">
+    <div class="mt-2">
+        <label class="form-label" for="blogpostId">blogpost ID</label>
+        <input type="text" disabled
+        id ="blogpostId"
+        class = "form-control"
+        name ="blogpostId"
+       [(ngModel)] = "blogpost.id">
+        
+    </div>
+
+
+    <div class="mb-5">
+        <label for="BookTitle" class="form-label">Book Title</label>
+        <input type="text" class="form-control" id="BookTitle" aria-describedby="BookTitleHelp"  name="BookTitle" [(ngModel)]="blogpost.title" >
+        <small id="BookTitle" class="form-text text-muted">Enter Book Title.</small>
+    </div>
+
+
+    <div class="mb-5">
+        <label for="ShortDescription" class="form-label">Short Description</label>
+        <input type="text" class="form-control" id="ShortDescription" aria-describedby="ShortDescription"  name="ShortDescription" [(ngModel)]="blogpost.shortDescription">
+        <small id="ShortDescription" class="form-text text-muted">Enter Short Description not more than 100 words .</small>
+    </div>
+
+
+    <div class="mb-5">
+        <label for="Author" class="form-label">Author</label>
+        <input type="text" class="form-control" id="Author" aria-describedby="Author"  name="Author" [(ngModel)]="blogpost.author">
+        <small id="Author" class="form-text text-muted">Name of Author should not contain numbers nor special characters.</small>
+    </div>
+
+
+    <div class="mb-5">
+        <label for="BookUrlHandle" class="form-label">Url Handle</label>
+        <input type="text" class="form-control" id="BookUrlHandle" aria-describedby="BookUrlHandle"  name="BookUrlHandle"  [(ngModel)]="blogpost.urlHandle" >
+        <small id="BookUrlHandle" class="form-text text-muted">Enter UrlHandle.</small>
+    </div>
+
+
+    <div class="mb-5">
+        <label for="Content" class="form-label">Content</label>
+
+        <div class="d-flex flex-row">
+            <div class="col-6 p-2">
+                <textarea 
+                id="Content"
+                name="Content"
+                class="form-control" 
+                style="height: 350px; max-height: 350px;"
+                [(ngModel)]="blogpost.content" >
+                </textarea>
+            </div>
+
+
+           
+        </div>
+
+        
+        <small id="Content" class="form-text text-muted">Content should not exceed 500 words.</small>
+    </div>
+
+
+    <div class="mt-5">
+        <label for="featuredUrl" class="form-label">Featured ImageUrl</label>
+       
+        <ng-container *ngIf="blogpost.featuredUrl !== ''">
+            <div>
+                <img [src] = "blogpost.featuredUrl" height="100" class="my-2">
+            </div>
+        </ng-container>
+
+        
+        <input type="text"
+        class="form-control"
+        id="featuredUrl" 
+       
+        name="featuredUrl" 
+        [(ngModel)]="blogpost.featuredUrl">
+        <small id="featuredUrl" class="form-text text-muted">Enter Featured ImageUrl.</small>
+    </div>
+
+    
+    <div class="mb-5">
+        <label for="DateCreated" class="form-label">Date Created</label>
+        <input type="date" class="form-control" id="DateCreated" aria-describedby="DateCreated"  name="DateCreated" value="{{blogpost.dateCreated}}" [ngModel]="blogpost.dateCreated | date: 'yyy-MM-dd'" (ngModelChange)="blogpost.dateCreated = $event" >
+        <small id="DateCreated" class="form-text text-muted">Date book was published.</small>
+    </div>
+
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="IsVisible" id="isVisibleYes" [(ngModel)]="blogpost.isVisible" [value]="true">
+        <label class="form-check-label" for="isVisibleYes">
+          Is Visible?
+        </label>
+    </div>
+
+    <div class="mt-3">
+        <label for="rCategory" class="form-label">Category </label>
+        <ng-container *ngIf="categories$ | async as rCategory">
+            <select name="rCategory" [(ngModel)]="selectedCategories" id="rCategory" class="form-control" multiple>
+                <option *ngFor="let item of rCategory" [value]="item.id">{{item.name}}</option>
+            </select>
+        </ng-container>
+    </div>
+
+
+
+    <div class="mt-5 mb-4">
+        <button type="submit" class="btn btn-primary px-3 rounded-pill">Save</button>
+    
+        <div type="button" class="btn btn-danger ms-3  px-3 rounded-pill" (click) ="onDelete()">Delete</div> 
+
+</div>     
+    
+</div>
+
+</form>
+
+    </ng-container>
+
+
+
+
+    <ng-template #notfound>
+        <div class="alert alert-warning" role="alert">
+           blogpost not found!
+          </div>
+    </ng-template>
+</div>

@@ -12,6 +12,7 @@ import { EditCategoryComponent } from './features/category/edit-category/edit-ca
 import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
 import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
 import { FormsModule } from '@angular/forms';
+import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     EditCategoryComponent,
     BlogpostListComponent,
     AddBlogpostComponent,
-    
+    EditBlogpostComponent
   ],
   imports: [
     BrowserModule,
